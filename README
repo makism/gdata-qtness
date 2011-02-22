@@ -1,0 +1,8 @@
+As the project name implies, this is a library in Qt which allows the developers to access the Google Data (huge) API.
+
+The need for this library arose because of personal needs. So the roadmap is to implement basic functionality and then add support for Google Documents.
+
+Got it? For starters only a subset of Google Data's API will be implemented.
+
+The final goal is a KDE4 Plasmoid :D.
+
