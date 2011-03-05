@@ -1,0 +1,7 @@
+This program is a sample how ClientLogin authentication works.
+As an extra it fetches the list with all documents.
+
+You must edit "Try_ClientLogin.cpp" and give your own username/password.
+
+How to compile:
+  qmake && make
