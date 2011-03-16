@@ -1,0 +1,8 @@
+This program is a sample how to fetch an anonymous OAuthGetRequestToken from Google.
+
+How to compile:
+  qmake && make
+
+
+
+THIS IS NOT A PRODUCTION GRADE RELEASE. DONT USE IT.
