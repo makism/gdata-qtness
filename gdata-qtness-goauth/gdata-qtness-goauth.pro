@@ -16,12 +16,14 @@ CONFIG   -= app_bundle
 DEFINES += GDATAQTNESSGOAUTH_LIBRARY
 
 SOURCES += \
-    requesttoken.cpp
+    requesttoken.cpp \
+    authorizetoken.cpp
 
 HEADERS +=\
         gdata-qtness-goauth_global.h \
     gdata-qtness-goauth_namespace.h \
-    requesttoken.h
+    requesttoken.h \
+    authorizetoken.h
 
 unix:!symbian {
     maemo5 {
