@@ -21,15 +21,15 @@ namespace GOAuth {
 class GDATAQTNESSGOAUTHSHARED_EXPORT RequestToken : public QObject
 {
     Q_OBJECT
+
 public:
     explicit RequestToken(QObject *parent = 0);
-    ~RequestToken(void);
+    ~RequestToken();
 
     void setScope(GoogleScope::ScopeType &_scope);
     void setScope(QList<GoogleScope::ScopeType> &_scope);
     void setScope(const QString &_scope);
-
-    void clearScope(void);
+    void clearScope();
 
     void setVersion(Version _version);
 
@@ -40,82 +40,22 @@ public:
     QString getOAuthToken() const;
     QString getOAuthTokenSecret() const;
 
-    void request(void)
-    {
-        QString tempScope;
-        foreach(QString scope, mScope)
-            tempScope.append(scope + " ");
-        mGoogleParameters.insert("scope", tempScope.trimmed());
-        mParameters.insert("oauth_timestamp", QByteArray::number(QDateTime::currentDateTime().toTime_t()));
-
-        generateHeaderData();
-        generateSignatureBaseString();
-        generateSignature();
-
-
-        mNetManager = new QNetworkAccessManager();
-
-        if (mRequestMethod==GET)
-            mRequestTokenUrl.addQueryItem("scope", mGoogleParameters["scope"]);
-
-        mRequest.setUrl(mRequestTokenUrl);
-
-        mHeaderData.append(",oauth_signature=\"" + mSignature + "\"");
-        mHeaderData.append(",realm=\"\"");
-        mHeaderData.prepend("OAuth ");
-
-        mRequest.setRawHeader("Authorization", mHeaderData.toUtf8());
-
-        if(mRequestMethod==GET)
-        {
-            mReply = mNetManager->get(mRequest);
-        }
-        else
-        {
-            mRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
-            QByteArray postScope("scope=");
-            postScope.append(mGoogleParameters["scope"]);
-
-            mReply = mNetManager->post(mRequest, postScope);
-        }
-
-        connect(mReply, SIGNAL(readyRead()),
-                this, SLOT(readyRead()));
-        connect(mReply, SIGNAL(error(QNetworkReply::NetworkError)),
-                this, SLOT(error(QNetworkReply::NetworkError)));
-    }
+    void request();
 
 signals:
-    void tokenReceived(void);
+    void tokenReceived();
     void requestError(ErrorCode errorCode);
 
-public slots:
-    void readyRead(void)
-    {
-        QString result(mReply->readAll());
-
-        QStringList list_result = result.split("&");
-        foreach(QString token, list_result)
-        {
-            QStringList split_token = token.split("=");
-            mTokensReceived.insert(split_token[0], split_token[1]);
-        }
-
-        emit(tokenReceived());
-    }
-
-    void error(QNetworkReply::NetworkError error)
-    {
-        qDebug() << "Error\t" << error;
-    }
-
+private slots:
+    void readReady();
+    void readError(QNetworkReply::NetworkError error);
 
 private:
-    void generateHeaderData(void);
-    void generateSignatureBaseString(void);
-    void generateSignature(void);
+    void generateHeaderData();
+    void generateSignatureBaseString();
+    void generateSignature();
 
-
+private:
     HttpMethod mRequestMethod;
     QString mRequestMethodStr;
 
@@ -133,7 +73,7 @@ private:
     QMap<QString, QString> mGoogleParameters;
     QMap<QString, QString> mTokensReceived;
 
-    QNetworkReply *mReply;
+    QNetworkReply *mNetReply;
     QNetworkAccessManager *mNetManager;
     QNetworkRequest mRequest;
 };
