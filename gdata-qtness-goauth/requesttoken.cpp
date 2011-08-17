@@ -102,7 +102,6 @@ void GOAuth::RequestToken::request()
     generateSignatureBaseString();
     generateSignature();
 
-
     mNetManager = new QNetworkAccessManager();
 
     if (mRequestMethod==GET)
@@ -185,11 +184,13 @@ void GOAuth::RequestToken::readReady()
         foreach(QString token, list_result)
         {
             QStringList split_token = token.split("=");
-            mTokensReceived.insert(split_token[0], split_token[1]);
+            QString value(QByteArray::fromPercentEncoding(split_token[1].toUtf8()));
+
+            mTokensReceived.insert(split_token[0], value);
         }
 
         if (mTokensReceived["oauth_callback_confirmed"]=="true")
-            emit(tokenReceived());
+            emit(tokenReceived(getOAuthToken()));
 
     } else {
         emit(requestError(BadRequest));
@@ -209,6 +210,12 @@ QString GOAuth::RequestToken::getOAuthToken() const
 QString GOAuth::RequestToken::getOAuthTokenSecret() const
 {
     return mTokensReceived["oauth_token_secret"];
+}
+
+
+void GOAuth::RequestToken::setCallback(const QString &_callback)
+{
+    mParameters.insert("oauth_callback", _callback);
 }
 
 }

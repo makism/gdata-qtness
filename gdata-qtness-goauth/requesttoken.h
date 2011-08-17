@@ -31,6 +31,8 @@ public:
     void setScope(const QString &_scope);
     void clearScope();
 
+    void setCallback(const QString &_callback);
+
     void setVersion(Version _version);
 
     void setPreferredMethod(HttpMethod _method);
@@ -43,7 +45,7 @@ public:
     void request();
 
 signals:
-    void tokenReceived();
+    void tokenReceived(const QString &);
     void requestError(ErrorCode errorCode);
 
 private slots:
