@@ -4,3 +4,4 @@ At this point, only a RequestToken is retrieved.
 Will follow a proper example, once the class is completed.
 
 The encryption code is based on QOAuth :-).
+Only anonymous, oob (as callback) access is supported for the time being...
