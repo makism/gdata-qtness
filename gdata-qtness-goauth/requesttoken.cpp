@@ -215,7 +215,7 @@ QString GOAuth::RequestToken::getOAuthTokenSecret() const
 
 void GOAuth::RequestToken::setCallback(const QString &_callback)
 {
-    mParameters.insert("oauth_callback", _callback);
+    mParameters.insert("oauth_callback", _callback.toUtf8().toPercentEncoding());
 }
 
 }
