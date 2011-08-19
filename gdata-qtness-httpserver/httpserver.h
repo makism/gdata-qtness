@@ -21,6 +21,10 @@ public:
 
     void incomingConnection(int socket);
 
+signals:
+//    void calledback(const QString &);
+//    void callIgnored();
+
 private slots:
     void readClient();
     void discardClient();

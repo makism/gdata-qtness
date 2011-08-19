@@ -41,13 +41,14 @@ void HttpServer::readClient()
         os << "HTTP/1.0 200 Ok\r\n"
               "Content-Type: text/html; charset=\"utf-8\"\r\n";
 
-        qDebug() << socket->readAll();
+        QString line = os.readLine(256);
+        QString qdata = line.mid(line.indexOf('?') + 1);
+        qDebug() << qdata;
 
         socket->close();
 
-        if (socket->state() == QTcpSocket::UnconnectedState) {
+        if (socket->state() == QTcpSocket::UnconnectedState)
             delete socket;
-        }
     }
 }
 
