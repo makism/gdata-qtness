@@ -12,11 +12,11 @@ GOAuth::AuthorizeToken::AuthorizeToken(QObject *parent) :
 
 GOAuth::AuthorizeToken::~AuthorizeToken()
 {
-    delete mNetReply;
-    delete mNetManager;
+//    delete mNetReply;
+//    delete mNetManager;
 
-    mNetReply = 0;
-    mNetManager = 0;
+//    mNetReply = 0;
+//    mNetManager = 0;
 }
 
 void GOAuth::AuthorizeToken::setDomain(const QString &_domain)
@@ -52,21 +52,22 @@ void GOAuth::AuthorizeToken::request()
         mAuthorizeTokenUrl.addQueryItem(i.key(), i.value());
     }
 
-    mNetManager = new QNetworkAccessManager();
+    emit userAuthorizationNeeded(mAuthorizeTokenUrl.toString());
 
-    mRequest.setUrl(mAuthorizeTokenUrl);
-    mNetReply = mNetManager->get(mRequest);
+//    mNetManager = new QNetworkAccessManager();
 
-    connect(mNetReply, SIGNAL(readyRead()),
-            this, SLOT(readReady()));
+//    mRequest.setUrl(mAuthorizeTokenUrl);
+//    mNetReply = mNetManager->get(mRequest);
+
+//    connect(mNetReply, SIGNAL(readyRead()),
+//            this, SLOT(readReady()));
 }
 
 
 void GOAuth::AuthorizeToken::readReady()
 {
-    QString result(mNetReply->readAll());
-
-    emit(authorizePageReceived(result));
+//    QString result(mNetReply->readAll());
+//    emit(authorizePageReceived(result));
 }
 
 }

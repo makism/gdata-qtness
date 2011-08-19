@@ -30,7 +30,8 @@ public:
     void request();
 
 signals:
-    void authorizePageReceived(const QString &_page);
+//    void authorizePageReceived(const QString &_page);
+    void userAuthorizationNeeded(const QString &_url);
 
 public slots:
     void setToken(const QString &_token);
@@ -40,9 +41,9 @@ private:
     QMap<QString, QString> mGoogleParameters;
 
     QUrl mAuthorizeTokenUrl;
-    QNetworkReply *mNetReply;
-    QNetworkAccessManager *mNetManager;
-    QNetworkRequest mRequest;
+//    QNetworkReply *mNetReply;
+//    QNetworkAccessManager *mNetManager;
+//    QNetworkRequest mRequest;
 };
 
 }
