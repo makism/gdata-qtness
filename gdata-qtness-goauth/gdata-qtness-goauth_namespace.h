@@ -29,29 +29,29 @@ namespace GoogleScope {
 typedef QString ScopeType;
 
 const ScopeType ANALYTICS = "https://www.google.com/analytics/feeds/";
-const ScopeType GOOGLE_BASE = "https://www.google.com/analytics/feeds/";
-const ScopeType GOOGLE_BUZZ = "https://www.google.com/analytics/feeds/";
-const ScopeType BOOK_SEARCH = "https://www.google.com/analytics/feeds/";
-const ScopeType BLOGGER = "https://www.google.com/analytics/feeds/";
-const ScopeType CALENDAR = "https://www.google.com/analytics/feeds/";
-const ScopeType CONTACTS = "https://www.google.com/analytics/feeds/";
-const ScopeType CHROME_WEB_STORE = "https://www.google.com/analytics/feeds/";
-const ScopeType DOCUMENTS_LIST = "https://www.google.com/analytics/feeds/";
-const ScopeType FINANCE = "https://www.google.com/analytics/feeds/";
-const ScopeType GMAIL = "https://www.google.com/analytics/feeds/";
-const ScopeType H9 = "https://www.google.com/analytics/feeds/";
-const ScopeType MAPS = "https://www.google.com/analytics/feeds/";
-const ScopeType MODERATOR = "https://www.google.com/analytics/feeds/";
-const ScopeType OPENSOCIAL = "https://www.google.com/analytics/feeds/";
-const ScopeType ORKUT = "https://www.google.com/analytics/feeds/";
-const ScopeType PICASA_WEB = "https://www.google.com/analytics/feeds/";
-const ScopeType SIDEWIKI = "https://www.google.com/analytics/feeds/";
-const ScopeType SITES = "https://www.google.com/analytics/feeds/";
-const ScopeType SPREADSHEETS = "https://www.google.com/analytics/feeds/";
-const ScopeType URL_SHORTENER = "https://www.google.com/analytics/feeds/";
-const ScopeType WAVE = "https://www.google.com/analytics/feeds/";
-const ScopeType WEBMASTER_TOOLS = "https://www.google.com/analytics/feeds/";
-const ScopeType YOUTUBE = "https://www.google.com/analytics/feeds/";
+const ScopeType GOOGLE_BASE = "http://www.google.com/base/feeds/";
+const ScopeType GOOGLE_BUZZ = "";
+const ScopeType BOOK_SEARCH = "http://www.google.com/books/feeds/";
+const ScopeType BLOGGER = "http://www.blogger.com/feeds/";
+const ScopeType CALENDAR = "http://www.google.com/calendar/feeds";
+const ScopeType CONTACTS = "https://www.google.com/m8/feeds/";
+const ScopeType CHROME_WEB_STORE = "";
+const ScopeType DOCUMENTS_LIST = "https://docs.google.com/feeds/";
+const ScopeType FINANCE = "http://finance.google.com/finance/feeds/";
+const ScopeType GMAIL = "https://mail.google.com/mail/feed/atom/";
+const ScopeType H9 = "https://www.google.com/health/feeds/";
+const ScopeType MAPS = "http://maps.google.com/maps/feeds/";
+const ScopeType MODERATOR = "";
+const ScopeType OPENSOCIAL = "";
+const ScopeType ORKUT = "";
+const ScopeType PICASA_WEB = "http://picasaweb.google.com/data";
+const ScopeType SIDEWIKI = "http://www.google.com/sidewiki/feeds/";
+const ScopeType SITES = "https://sites.google.com/feeds/";
+const ScopeType SPREADSHEETS = "https://spreadsheets.google.com/feeds/";
+const ScopeType URL_SHORTENER = "";
+const ScopeType WAVE = "";
+const ScopeType WEBMASTER_TOOLS = "http://www.google.com/webmasters/tools/feeds/";
+const ScopeType YOUTUBE = "http://gdata.youtube.com";
 }
 }
 }
