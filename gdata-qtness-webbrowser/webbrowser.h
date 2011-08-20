@@ -2,6 +2,7 @@
 #define WEBBROWSER_H
 
 #include <QMainWindow>
+#include <QUrl>
 
 #include "gdata-qtness-webbrowser_global.h"
 
@@ -19,7 +20,9 @@ public:
     ~WebBrowser();
 
 public slots:
-    void setHtml(const QString &_html);
+    void showProgressBar();
+    void hideProgressBar(bool val);
+    void setUrl(const QString &_url);
 
 private:
     Ui::MainWindow *ui;
